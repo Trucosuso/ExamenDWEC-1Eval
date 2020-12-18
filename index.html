@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 2020</title>
+    <!--Load the Google Charts AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="examen2020.js"></script>
+    <script>
+        // Cargar la Visualization API y el paquete corechart.
+        google.charts.load("current", { "packages": ["corechart"] });
+
+        // Llamar a pintarGraficoBarras cuando la Google Visualization API haya cargado.
+        google.charts.setOnLoadCallback(pintarGraficoBarras);
+
+        function pintarGraficoBarras() {
+            // Crear la tabla de datos
+            var data = new google.visualization.DataTable();
+            data.addColumn("number", "Año");
+            data.addColumn("number", "Población");
+            data.addColumn({ type: "string", role: "style" });
+            data.addRows([
+                [2017, 14252, "opacity: 0.6"],
+                [2018, 23360, "opacity: 1"],
+                [2019, 40421, "opacity: 0.4"],
+                [2020, 43500, "opacity: 0.8"]
+            ]);
+
+            // Opciones del gráfico
+            var options = {
+                title: "Evolución de la población de Navalcarnero",
+                width: 700,
+                colors: ["green"],
+                backgroundColor: "blue",
+                animation: {
+                    duration: 5000,
+                    startup: true
+                }
+            };
+
+            // Instanciar y dibujar el gráfico con las opciones elegidas
+            var chart = new google.visualization.ColumnChart(document.body);
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
